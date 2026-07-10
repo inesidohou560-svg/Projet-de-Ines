@@ -1,0 +1,551 @@
+/* ==========================================================================
+   RESET & VARIABLES GLOBALES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #0F172A;   /* Bleu nuit profond */
+    --secondary-color: #2563EB; /* Bleu dynamique */
+    --accent-color: #EA580C;    /* Orange dynamique pour WhatsApp */
+    --text-color: #334155;      /* Gris foncé pour le texte */
+    --light-bg: #F8FAFC;        /* Fond clair alternatif */
+    --white: #FFFFFF;
+    --font-title: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    --transition: all 0.3s ease;
+
+    /* NOUVELLES VARIABLES INSPIRÉES DU STYLE "LOVE NATURE" */
+    --nature-text-color: #4A5568; /* Gris doux et lisible */
+    --bg-white: #FFFFFF;          /* Fond blanc pur */
+    --bg-alt: #FAF9F6;            /* Fond crème très doux vu dans la vidéo */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--white);
+    padding-top: 70px; /* Compense le header fixe */
+}
+
+/* Structure de base */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.container-small {
+    width: 90%;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* ==========================================================================
+   TYPOGRAPHIE & BOUTONS D'ORIGINE
+   ========================================================================== */
+h1, h2, h3, h4 {
+    font-family: var(--font-title);
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Style commun des boutons */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-family: var(--font-title);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+/* Bouton Principal (WhatsApp) */
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(234, 88, 12, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4);
+}
+
+/* Bouton Secondaire */
+.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.1); 
+    color: var(--white) !important;
+    border: 2px solid var(--white);              
+    margin-left: 15px;
+}
+
+.btn-secondary:hover {
+    background-color: var(--white);
+    color: var(--primary-color) !important;
+}
+
+/* ==========================================================================
+   HEADER & NAVIGATION
+   ========================================================================== */
+.main-header {
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.main-header .container {
+    padding: 15px 0;
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav-menu ul li {
+    margin-left: 25px;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-family: var(--font-title);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.nav-menu ul li a:hover {
+    color: var(--secondary-color);
+}
+
+/* ==========================================================================
+   HERO SECTION (100% INTACTE ET SÉCURISÉE)
+   ========================================================================== */
+.hero-section {
+    background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+    color: var(--white);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+    padding: 80px 0;
+}
+
+.hero-text {
+    flex: 1.2;
+    text-align: left;
+}
+
+.hero-subtitle {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    color: #93C5FD;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.hero-section h1 {
+    color: var(--white);
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.hero-description {
+    max-width: 750px;
+    margin: 0 0 35px 0;
+    font-size: 1.15rem;
+    color: #E2E8F0;
+    text-align: left;
+}
+
+.hero-cta {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image img {
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 6px solid var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+/* ==========================================================================
+   STRUCTURE ET INTEGRATION DES NOUVELLES SECTIONS "LOVE NATURE"
+   ========================================================================== */
+.nature-section {
+    padding: 90px 0;
+    font-family: var(--font-body);
+    color: var(--nature-text-color);
+}
+
+.bg-white { background-color: var(--bg-white); }
+.bg-alt { background-color: var(--bg-alt); }
+
+/* Titres de Section "Love Nature" */
+.nature-title {
+    font-family: var(--font-title);
+    font-size: 2.3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.nature-subtitle {
+    font-size: 1.1rem;
+    color: #718096;
+    max-width: 650px;
+    margin: 0 auto 50px auto;
+    line-height: 1.6;
+}
+
+/* Grilles communes pour l'affichage en Cards */
+.nature-grid {
+    display: grid;
+    gap: 30px;
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Design unifié des cartes (Compétences, Services, Certificats) */
+.nature-card {
+    background-color: var(--bg-white);
+    padding: 35px 25px;
+    border-radius: 6px;
+    border: 1px solid #E2E8F0;
+    transition: var(--transition);
+    text-align: left;
+}
+
+.nature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.04);
+}
+
+.nature-card h3, .nature-card h4 {
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+
+.nature-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--nature-text-color);
+}
+
+/* Styles spécifiques aux cartes d'À propos */
+.about-text p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--nature-text-color);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.about-objective {
+    background-color: var(--bg-alt);
+    padding: 35px;
+    border-radius: 6px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.about-objective h3 {
+    font-family: var(--font-title);
+    font-size: 1.35rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Style de la boîte d'exemple (Compétences) */
+.example-box {
+    margin-top: 15px;
+    font-size: 0.85rem !important;
+    color: #64748B;
+    background-color: var(--bg-alt);
+    padding: 10px 12px;
+    border-radius: 4px;
+    border-left: 3px solid var(--secondary-color);
+}
+
+/* Style des cartes de Services */
+.service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.problem-text {
+    font-size: 0.85rem;
+    color: #94A3B8;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+/* Style des cartes de Certificats */
+.cert-card {
+    position: relative;
+}
+
+.cert-year {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 2px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.cert-org {
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+/* Style des cartes de Projets */
+.nature-project-card {
+    background-color: var(--bg-white);
+    border-radius: 6px;
+    border: 1px solid #E2E8F0;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.nature-project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.04);
+}
+
+.project-header-placeholder {
+    background-color: #EDF2F7;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-title);
+    font-weight: 700;
+    color: #718096;
+    letter-spacing: 1px;
+}
+
+.project-body {
+    padding: 30px;
+    text-align: center;
+}
+
+/* Style Section Contact (Style épuré Love Nature) */
+.contact-nature-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.info-item {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.info-item strong {
+    display: block;
+    font-size: 0.75rem;
+    color: #A0AEC0;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+}
+
+.info-item p, .info-item a {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.info-item a:hover {
+    color: var(--secondary-color);
+}
+
+/* Bouton Spécifique "Love Nature" (Jaune Ocre Chaleureux) */
+.btn-nature {
+    background-color: #E0A922;
+    color: #FFFFFF;
+    padding: 12px 28px;
+    font-family: var(--font-title);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.btn-nature:hover {
+    background-color: #C69216;
+}
+
+/* Footer épuré */
+.nature-footer {
+    background-color: var(--primary-color);
+    color: #94A3B8;
+    padding: 45px 0;
+    font-size: 0.9rem;
+}
+
+.footer-sub {
+    font-size: 0.8rem;
+    color: #475569;
+    margin-top: 5px;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVE POUR MOBILES ET TABLETTES)
+   ========================================================================== */
+@media (max-width: 900px) {
+    .contact-nature-wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    .info-item {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-flex {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-menu ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-menu ul li {
+        margin: 5px 10px;
+    }
+
+    /* Ajustement Hero mobile */
+    .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 40px;
+        padding: 50px 0;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
+    .hero-section h1 {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+
+    .hero-description {
+        text-align: center;
+        margin: 0 auto 35px auto;
+    }
+
+    .hero-cta {
+        flex-direction: column; 
+        gap: 15px;
+        justify-content: center;              
+    }
+
+    .btn-secondary {
+        margin-left: 0 !important; 
+        width: fit-content;        
+    }
+
+    .hero-image img {
+        width: 280px;
+        height: 280px;
+    }
+
+    /* Sections Nature en mobile */
+    .nature-section {
+        padding: 60px 0;
+    }
+    
+    .nature-title {
+        font-size: 1.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 92%;
+    }
+
+    .hero-section h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-image img {
+        width: 230px;
+        height: 230px;
+    }
+}
